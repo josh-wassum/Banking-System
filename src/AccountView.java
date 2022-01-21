@@ -81,7 +81,7 @@ public class AccountView extends View{
 
         // Handles the deposit on click functionality.
         deposit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) { //Calls a function defined by Swing.
+            public void actionPerformed(ActionEvent e) {
                 double amount = Integer.parseInt(depositAmount.getText());
                account.deposit(amount);
                accountSaver.editAccount(account);
@@ -92,7 +92,7 @@ public class AccountView extends View{
 
         // Handles the withdrawal on click functionality.
         withdraw.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {//Calls a function defined by Swing.
+            public void actionPerformed(ActionEvent e) {
                 double amount = Integer.parseInt(withdrawAmount.getText());
                 account.withdraw(amount);
                 accountSaver.editAccount(account);
@@ -103,7 +103,7 @@ public class AccountView extends View{
 
         //Handles logging out and redirecting to a new screen.
         logoutBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {//Calls a function defined by Swing.
+            public void actionPerformed(ActionEvent e) {
                 f.setVisible(false);
                 LoginView loginView = new LoginView(accountSaver);
                 loginView.serveView();
@@ -113,14 +113,14 @@ public class AccountView extends View{
 
         //Handles opening of to delete confirmation popup menu.
         closeBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {//Calls a function defined by Swing.
+            public void actionPerformed(ActionEvent e) {
                 popupmenu.show(f, 250, 350);
             }
         });
 
         // Handles the user closing their account.
         confirm.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {//Calls a function defined by Swing.
+            public void actionPerformed(ActionEvent e) {
                 f.setVisible(false);
                 LoginView loginView = new LoginView(accountSaver);
                 loginView.serveView();
