@@ -7,9 +7,7 @@ of the Swing library in Java.
 
 My purpose in designing this software was to gain more experience with programming in Java and using its
 various libraries. This program is to demonstrate my skill in creating a Java program from scratch that
-uses various concepts of Object Orientated Programming. 
-
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running and a walkthrough of the code.  Focus should be on sharing what you learned about the language syntax.}
+uses various concepts of Object Orientated Programming.
 
 [Software Demo Video](http://youtube.link.goes.here)
 
