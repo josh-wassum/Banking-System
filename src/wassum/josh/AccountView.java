@@ -40,8 +40,7 @@ public class AccountView extends View{
                 scanner.nextLine();
                 return null;
             } else{
-                double newAmount = this.account.getBalance() - amount;
-                this.account.setBalance(newAmount);
+                this.account.withdraw(amount);
                 return this.getAccount();
             }
         } else {
@@ -56,8 +55,7 @@ public class AccountView extends View{
         boolean isInt = scanner.hasNextInt();
         if (isInt){
             double amount = scanner.nextInt();
-            double newAmount = this.account.getBalance() + amount;
-            this.account.setBalance(newAmount);
+            this.account.deposit(amount);
             return this.getAccount();
         } else {
             System.out.println("Invalid entry!");
@@ -80,7 +78,6 @@ public class AccountView extends View{
             return false;
         }
     }
-
 
     public BankAccount getAccount() {
         return account;

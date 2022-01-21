@@ -68,8 +68,8 @@ public class Main {
                     if (account == null) {
                         System.out.println("Incorrect Email or Password, please try again");
                     } else {
-                        boolean loggedIn = true;
                         AccountView userAccount = new AccountView(account);
+                        boolean loggedIn = true;
                         System.out.println(userAccount.getMenu());
 
                         // Runs the account view as long as the user is logged in.
@@ -79,7 +79,7 @@ public class Main {
                             switch (userSelection) {
 
                                 case 1: // User balance inquiry.
-                                    System.out.println("Your current Balance is " + account.getBalance());
+                                    account.viewBalance();
                                     break;
 
                                 case 2: // User withdrawals.
@@ -88,7 +88,6 @@ public class Main {
                                         for (var i = 0; i < accountList.size(); i++) {
                                             if (accountList.get(i).getAccountNumber() == updatedWithdrawalAccount.getAccountNumber()) {
                                                 accountList.set(i, updatedWithdrawalAccount);
-                                                System.out.println("Your updated balance is: " + account.getBalance());
                                                 break;
                                             }
                                         }
@@ -101,7 +100,6 @@ public class Main {
                                         for (var i = 0; i < accountList.size(); i++) {
                                             if (accountList.get(i).getAccountNumber() == updatedDepositAccount.getAccountNumber()) {
                                                 accountList.set(i, updatedDepositAccount);
-                                                System.out.println("Your updated balance is: " + account.getBalance());
                                                 break;
                                             }
                                         }
@@ -114,7 +112,6 @@ public class Main {
                                         for (var i = 0; i < accountList.size(); i++) {
                                             if (accountList.get(i).getAccountNumber() == userAccount.getAccount().getAccountNumber()) {
                                                 accountList.remove(i);
-                                                System.out.println("Your updated balance is: " + account.getBalance());
                                                 break;
                                             }
                                         }

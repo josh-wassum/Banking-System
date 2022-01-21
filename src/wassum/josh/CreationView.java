@@ -2,6 +2,7 @@ package wassum.josh;
 
 import java.util.Scanner;
 
+// Handles information related to creating an account.
 public class CreationView extends View{
     public CreationView(){
         super("Welcome to the Creation view.");
@@ -18,6 +19,7 @@ public class CreationView extends View{
         System.out.println("Enter a starting balance: ");
         boolean isInt = scanner.hasNextInt();
 
+        // Check to make sure user entered an int
         if (isInt) {
             int balance = scanner.nextInt();
             if(balance > 0){

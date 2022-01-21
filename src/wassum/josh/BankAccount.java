@@ -1,5 +1,6 @@
 package wassum.josh;
 
+
 public class BankAccount {
     private double accountNumber;
     private double balance;
@@ -7,10 +8,20 @@ public class BankAccount {
     private String email;
     private String password;
 
+
+    /**
+     * This is my empty Class constructor.
+     * This constructor allows me to use my Saver object.
+     */
     public BankAccount(){
 
     }
 
+    /**
+     * This is my Class filled class constructor.
+     * This constructor allows me to pass the relevant information needed
+     * to create a new object.
+     */
     public BankAccount(double accountNumber, double balance, String customerName, String email, String password) {
         this.accountNumber = accountNumber;
         this.balance = balance;
@@ -18,24 +29,36 @@ public class BankAccount {
         this.email = email;
         this.password = password;
     }
+
     /***********************************************************
     *
     * Methods
     *
      ***********************************************************/
 
+    /**
+     * This method allows for a user to make a deposit.
+     * This receives an amount and sets the balance plus equal to it.
+     */
     public void deposit(double depositAmount) {
         this.balance += depositAmount;
         System.out.println("Deposit of " + depositAmount + " made. New balance is " + this.balance);
     }
 
+    /**
+     * This method allows for a user to make a Withdrawal.
+     * This receives an amount and sets the balance -= equal to it.
+     */
     public void withdraw(double withdrawAmount) {
-        if (this.balance - withdrawAmount < 0){
-            System.out.println("Only " + this.balance + " available.");
-        } else{
-            this.balance -= withdrawAmount;
-            System.out.println("Withdrawal of " + withdrawAmount + " processed. Remaining balance: " + this.balance);
-        }
+        this.balance -= withdrawAmount;
+        System.out.println("Withdrawal of " + withdrawAmount + " processed. Remaining balance: " + this.balance);
+    }
+
+    /**
+     * This method allows for a user to view their account balance.
+     */
+    public void viewBalance(){
+        System.out.println("You have a current balance of " + this.balance + ".");
     }
 
     /***********************************************************
