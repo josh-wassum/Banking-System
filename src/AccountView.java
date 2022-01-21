@@ -53,7 +53,7 @@ public class AccountView extends View{
         withdrawName.setBounds(50,250,125,25);
         JTextField withdrawAmount = new JTextField("0.0");
         withdrawAmount.setBounds(175, 250, 150, 25);
-        JButton withdraw = new JButton("Deposit");
+        JButton withdraw = new JButton("Withdraw");
         withdraw.setBounds(325, 250, 100,25);
 
         // Setting up the logging out and account closure GUI elements.
