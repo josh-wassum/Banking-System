@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * This class allows a user to log in to their account.
@@ -85,6 +87,12 @@ public class LoginView extends View{
                     }
                 }
                errorMessage.setVisible(true);
+            }
+        });
+
+        f.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent we) {
+                System.exit(0);
             }
         });
 

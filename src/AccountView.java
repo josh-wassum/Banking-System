@@ -1,6 +1,11 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
+
 
 /**
  * This class handles actions users can take
@@ -126,6 +131,12 @@ public class AccountView extends View{
                 loginView.serveView();
                 accountSaver.removeAccount(account);
                 accountSaver.objectSaver();
+            }
+        });
+
+        f.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent we) {
+                System.exit(0);
             }
         });
 
