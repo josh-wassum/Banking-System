@@ -4,8 +4,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
-
 
 /**
  * This class handles actions users can take
@@ -13,14 +11,12 @@ import static com.sun.java.accessibility.util.AWTEventMonitor.addWindowListener;
  * a GUI. Extends the View class.
  */
 public class AccountView extends View{
-    private Saver accountSaver;
-    private BankAccount account;
+    private final Saver accountSaver;
+    private final BankAccount account;
 
     /**
      * This is the constructor. It needs to receive the Saver object as well
      * as the account logged in.
-     * @param saver
-     * @param account
      */
     public AccountView(Saver saver, BankAccount account) {
         super("Account View", "Welcome " + account.getCustomerName() + ".");

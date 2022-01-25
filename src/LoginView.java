@@ -9,7 +9,7 @@ import java.awt.event.WindowEvent;
  * This view extends the View class.
  */
 public class LoginView extends View{
-    private Saver accountSaver;
+    private final Saver accountSaver;
 
     /**
      * Class constructor. Accepts the Saver object

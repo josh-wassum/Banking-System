@@ -79,7 +79,6 @@ public class Saver {
 
     /**
      * Add an account to the ArrayList.
-     * @param account
      */
     public void addAccount(BankAccount account) {
         this.accountList.add(account);
@@ -89,8 +88,6 @@ public class Saver {
      * Attempts to change a record within the ArrayList
      * with a user defined account. Returns true if
      * successful and false otherwise.
-     * @param account
-     * @return
      */
     public boolean editAccount(BankAccount account){
         for (var i = 0; i < accountList.size(); i++){

@@ -10,7 +10,7 @@ import java.awt.event.WindowEvent;
  * Extends the View class.
  */
 public class StartMenu extends View{
-    private Saver accountSaver;
+    private final Saver accountSaver;
 
     /**
      * This is our class constructor.
