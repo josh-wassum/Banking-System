@@ -10,17 +10,15 @@ import java.awt.event.WindowEvent;
  * Extends the View class.
  */
 public class StartMenu extends View{
-    private final Saver accountSaver;
 
     /**
      * This is our class constructor.
      * It takes in the Saver object as a
      * parameter.
-     * @param saver
+
      */
-    public StartMenu(Saver saver) {
+    public StartMenu() {
         super("Start Menu", "Welcome to J's bank! How may we assist you?");
-        this.accountSaver = saver;
     }
 
     /**
@@ -53,7 +51,7 @@ public class StartMenu extends View{
         login.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 f.setVisible(false);
-                LoginView loginView = new LoginView(accountSaver);
+                LoginView loginView = new LoginView();
                 loginView.serveView();
             }
         });
@@ -62,7 +60,7 @@ public class StartMenu extends View{
         register.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                f.setVisible(false);
-               RegisterView registerView = new RegisterView(accountSaver);
+               RegisterView registerView = new RegisterView();
                registerView.serveView();
             }
         });

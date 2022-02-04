@@ -5,8 +5,8 @@
  **/
 
 public abstract class View {
-    private String title;
-    private String message;
+    private final String title;
+    private final String message;
 
     public View(String title, String message){
         this.title = title;

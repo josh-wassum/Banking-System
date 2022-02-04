@@ -3,22 +3,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * This class allows a user to log in to their account.
  * This view extends the View class.
  */
 public class LoginView extends View{
-    private final Saver accountSaver;
 
     /**
      * Class constructor. Accepts the Saver object
      * as a parameter.
-     * @param accountSaver
      */
-    public LoginView(Saver accountSaver) {
+    public LoginView() {
         super("Login", "Please login!");
-        this.accountSaver = accountSaver;
+
     }
 
     /**
@@ -70,7 +70,7 @@ public class LoginView extends View{
         cancelBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 f.setVisible(false);
-                StartMenu startMenu = new StartMenu(accountSaver);
+                StartMenu startMenu = new StartMenu();
                 startMenu.serveView();
             }
         });
@@ -78,12 +78,22 @@ public class LoginView extends View{
         // Handles the user selecting the login button.
         loginBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                for (var i = 0; i < accountSaver.getAccountList().size(); i++){
-                    if (accountSaver.getAccountList().get(i).getEmail().equalsIgnoreCase(email.getText()) &&
-                    accountSaver.getAccountList().get(i).getPassword().equals(password.getText())){
-                        f.setVisible(false);
-                        AccountView accountView = new AccountView(accountSaver, accountSaver.getAccountList().get(i));
+                ResultSet user = Connector.findAccountByLogin(email.getText(), password.getText());
+                if (user != null) {
+                    f.setVisible(false);
+                    try {
+                        BankAccount loggedInUser = new BankAccount(
+                                user.getInt(1),
+                                user.getString(2),
+                                user.getString(3),
+                                user.getString(4),
+                                user.getInt(5),
+                                user.getDouble(6));
+                        user.close();
+                        AccountView accountView = new AccountView(loggedInUser);
                         accountView.serveView();
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
                     }
                 }
                errorMessage.setVisible(true);

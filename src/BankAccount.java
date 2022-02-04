@@ -1,6 +1,7 @@
 public class BankAccount {
-    private double accountNumber;
+    private int accountNumber;
     private double balance;
+    private int userId;
     private String customerName;
     private String email;
     private String password;
@@ -19,12 +20,14 @@ public class BankAccount {
      * This constructor allows me to pass the relevant information needed
      * to create a new object.
      */
-    public BankAccount(double accountNumber, double balance, String customerName, String email, String password) {
+    public BankAccount(int userId, String customerName, String email, String password, int accountNumber, double balance) {
         this.accountNumber = accountNumber;
         this.balance = balance;
         this.customerName = customerName;
         this.email = email;
         this.password = password;
+        this.userId = userId;
+        System.out.println("user logged in");
     }
 
     /***********************************************************
@@ -39,6 +42,7 @@ public class BankAccount {
      */
     public void deposit(double depositAmount) {
         this.balance += depositAmount;
+        Connector.editBalance(this.accountNumber, this.balance);
         System.out.println("Deposit of " + depositAmount + " made. New balance is " + this.balance);
     }
 
@@ -48,6 +52,7 @@ public class BankAccount {
      */
     public void withdraw(double withdrawAmount) {
         this.balance -= withdrawAmount;
+        Connector.editBalance(this.accountNumber, this.balance);
         System.out.println("Withdrawal of " + withdrawAmount + " processed. Remaining balance: " + this.balance);
     }
 
@@ -58,13 +63,14 @@ public class BankAccount {
         System.out.println("You have a current balance of " + this.balance + ".");
     }
 
+
     /***********************************************************
      *
      * Setters
      *
      *************************************************************/
 
-    public void setAccountNumber(double accountNumber) {
+    public void setAccountNumber(int accountNumber) {
         this.accountNumber = accountNumber;
     }
 
@@ -82,6 +88,10 @@ public class BankAccount {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getUserId() {
+        return userId;
     }
 
     /*******************************************************
@@ -108,5 +118,9 @@ public class BankAccount {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 }

@@ -3,22 +3,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * This class handles the creation of a users account.
  * It extends the View class.
  */
 public class RegisterView extends View{
-    private final Saver accountSaver;
 
     /**
      * This is the class constructor and takes the
      * Saver object as a parameter.
-     * @param saver
      */
-    public RegisterView(Saver saver) {
+    public RegisterView() {
         super("Create an Account", "Please create an account!");
-        this.accountSaver = saver;
     }
 
     /**
@@ -71,12 +70,18 @@ public class RegisterView extends View{
         // Handles the user creating an account.
         createBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                BankAccount newAccount = new BankAccount(Math.random(), 0.0,
-                        nameInput.getText(), email.getText(), password.getText());
-                accountSaver.addAccount(newAccount);
-                accountSaver.objectSaver();
+//                accountSaver.addAccount(newAccount);
+//                accountSaver.objectSaver();
+                Connector.createUser(nameInput.getText(), email.getText(), password.getText());
+                ResultSet user = Connector.findUserByLogin(email.getText(), password.getText());
+                try {
+                    Connector.createAccount(0.00, user.getInt(1));
+                    user.close();
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 f.setVisible(false);
-                StartMenu startMenu = new StartMenu(accountSaver);
+                StartMenu startMenu = new StartMenu();
                 startMenu.serveView();
             }
         });
@@ -85,7 +90,7 @@ public class RegisterView extends View{
         cancelBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 f.setVisible(false);
-                StartMenu startMenu = new StartMenu(accountSaver);
+                StartMenu startMenu = new StartMenu();
                 startMenu.serveView();
             }
         });

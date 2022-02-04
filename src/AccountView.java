@@ -11,16 +11,14 @@ import java.awt.event.WindowEvent;
  * a GUI. Extends the View class.
  */
 public class AccountView extends View{
-    private final Saver accountSaver;
     private final BankAccount account;
 
     /**
      * This is the constructor. It needs to receive the Saver object as well
      * as the account logged in.
      */
-    public AccountView(Saver saver, BankAccount account) {
+    public AccountView(BankAccount account) {
         super("Account View", "Welcome " + account.getCustomerName() + ".");
-        this.accountSaver = saver;
         this.account = account;
     }
 
@@ -85,7 +83,6 @@ public class AccountView extends View{
             public void actionPerformed(ActionEvent e) {
                 double amount = Integer.parseInt(depositAmount.getText());
                account.deposit(amount);
-               accountSaver.editAccount(account);
                depositAmount.setText("0.0");
                currentBalance.setText("Your current balance is: $" + account.getBalance());
             }
@@ -96,7 +93,6 @@ public class AccountView extends View{
             public void actionPerformed(ActionEvent e) {
                 double amount = Integer.parseInt(withdrawAmount.getText());
                 account.withdraw(amount);
-                accountSaver.editAccount(account);
                 withdrawAmount.setText("0.0");
                 currentBalance.setText("Your current balance is: $" + account.getBalance());
             }
@@ -106,9 +102,8 @@ public class AccountView extends View{
         logoutBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 f.setVisible(false);
-                LoginView loginView = new LoginView(accountSaver);
+                LoginView loginView = new LoginView();
                 loginView.serveView();
-                accountSaver.objectSaver();
             }
         });
 
@@ -123,10 +118,9 @@ public class AccountView extends View{
         confirm.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 f.setVisible(false);
-                LoginView loginView = new LoginView(accountSaver);
+                LoginView loginView = new LoginView();
                 loginView.serveView();
-                accountSaver.removeAccount(account);
-                accountSaver.objectSaver();
+                Connector.removeAccount(account.getUserId());
             }
         });
 
