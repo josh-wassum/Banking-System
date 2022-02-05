@@ -8,7 +8,7 @@ of the Swing library in Java.
 My purpose in designing this software was to gain more experience with programming in Java and using its
 various libraries. It also demonstrates my ability to connect a Java program to a widely used Database system.
 
-[Software Demo Video](https://youtu.be/b6PftOtbnl4)
+[Software Demo Video](https://youtu.be/u5F6jDZULL4)
 
 # Development Environment
 
